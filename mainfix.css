@@ -309,6 +309,7 @@ body {
 .cardBox {
     border-radius: 6px !important;
     overflow: hidden !important;
+    margin-left: 1em !important;
 }
 
 .cardBox:hover {
@@ -319,8 +320,8 @@ body {
 /* Continue watching progress indicator */
 .playedIndicator {
     background-color: var(--netflix-red) !important;
-    height: 4px !important;
-    border-radius: 2px !important;
+    height: 2vw !important;
+    border-radius: 10px !important;
 }
 
 /* Custom scrolling containers */
