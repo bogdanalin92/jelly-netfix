@@ -1,356 +1,316 @@
-/* Netflix-Style Theme for Jellyfin */
+/* ==========================
+   Netflix Modern Theme for Jellyfin
+   Optimized: webOS TV + Desktop
+   Author: Copilot Chat Assistant
+   ========================== */
 
-/* Root Variables - Netflix Color Palette */
+/* ROOT COLORS */
 :root {
-    --netflix-red: #E50914;
-    --netflix-dark-red: #B81D24;
-    --netflix-black: #141414;
-    --netflix-dark-gray: #181818;
-    --netflix-gray: #333333;
-    --netflix-light-gray: #564d4d;
-    --netflix-white: #ffffff;
-    --netflix-text-muted: #b3b3b3;
-    --netflix-hover: rgba(255, 255, 255, 0.1);
+  --nfx-red: #e50914;
+  --nfx-dark-red: #b81d24;
+  --nfx-black: #141414;
+  --nfx-dark-gray: #181818;
+  --nfx-gray: #333;
+  --nfx-light-gray: #564d4d;
+  --nfx-white: #fff;
+  --nfx-muted: #b3b3b3;
+  --nfx-hover: rgba(255,255,255,0.08);
 }
 
-/* Global Background */
-html {
-    background-color: var(--netflix-black) !important;
+/* ========== GENERAL LAYOUT ========== */
+html, body {
+  background: var(--nfx-black) !important;
+  color: var(--nfx-white) !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: 18px !important;
+  line-height: 1.5 !important;
+  min-height: 100vh;
 }
 
-body {
-    background-color: var(--netflix-black) !important;
-    color: var(--netflix-white) !important;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+/* Responsive font sizes */
+@media (max-width: 1024px) {
+  html { font-size: 20px !important; }
+}
+@media (min-width: 1800px) {
+  html { font-size: 26px !important; }
 }
 
-/* Main Content Area */
-.mainDrawer-drawerContent,
-.view,
-.page {
-    background-color: var(--netflix-black) !important;
+/* ========== HEADER & NAVIGATION ========== */
+.skinHeader, .headerTop {
+  background: var(--nfx-black) !important;
+  border-bottom: none !important;
 }
 
-/* Header/Navigation */
-.skinHeader {
-    background-color: var(--netflix-black) !important;
-    border-bottom: none !important;
+.headerLeft .button-link,
+.skinHeader .button-link {
+  color: var(--nfx-red) !important;
+  font-weight: 700 !important;
+  font-size: 2em !important;
+  letter-spacing: 2px;
 }
 
-.headerTop {
-    background: linear-gradient(180deg, rgba(0,0,0,0.7) 10%, transparent) !important;
-}
-
-/* Logo styling */
-.headerLeft .button-link {
-    color: var(--netflix-red) !important;
-    font-weight: bold !important;
-    font-size: 24px !important;
-}
-
-/* Navigation buttons */
-.headerButton,
-.navMenuButton {
-    color: var(--netflix-white) !important;
-    background: transparent !important;
+/* Navigation Buttons */
+.headerButton, .navMenuButton, .navMenuOption {
+  color: var(--nfx-white) !important;
+  background: transparent !important;
+  font-size: 1.1em !important;
+  min-height: 2.8em !important;
+  border-radius: 0.5em !important;
+  padding: 0.4em 1.3em !important;
+  border: none !important;
+  margin: 0 0.2em !important;
+  cursor: pointer;
+  transition: background 0.15s;
 }
 
 .headerButton:hover,
-.navMenuButton:hover {
-    background-color: var(--netflix-hover) !important;
-    color: var(--netflix-white) !important;
-}
-
-/* Search bar */
-.searchFields {
-    background-color: var(--netflix-gray) !important;
-    border: 1px solid var(--netflix-light-gray) !important;
-}
-
-.searchFields input {
-    background-color: transparent !important;
-    color: var(--netflix-white) !important;
-}
-
-/* Side Navigation */
-.mainDrawer,
-.navDrawer {
-    background-color: var(--netflix-dark-gray) !important;
-}
-
-.navMenuOption {
-    color: var(--netflix-white) !important;
-    border-radius: 4px !important;
-    margin: 2px 8px !important;
-}
-
+.navMenuButton:hover,
 .navMenuOption:hover,
+.headerButton:focus,
+.navMenuButton:focus,
+.navMenuOption:focus {
+  background: var(--nfx-hover) !important;
+  color: var(--nfx-white) !important;
+  outline: 2px solid var(--nfx-red) !important;
+  z-index: 2;
+}
+
+/* ========== SIDE DRAWER ========== */
+.mainDrawer, .mainDrawer-drawerContent, .navDrawer {
+  background: var(--nfx-dark-gray) !important;
+}
+
 .navMenuOption.navMenuOption-selected {
-    background-color: var(--netflix-hover) !important;
-    color: var(--netflix-white) !important;
+  background: var(--nfx-hover) !important;
+  color: var(--nfx-red) !important;
 }
 
-/* Content Cards */
-.card,
-.itemTile,
-.listItem {
-    background-color: var(--netflix-dark-gray) !important;
-    border: none !important;
-    border-radius: 4px !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+/* ========== SEARCH BAR ========== */
+.searchFields, .inputContainer, .selectContainer {
+  background: var(--nfx-gray) !important;
+  border: 1px solid var(--nfx-light-gray) !important;
+  border-radius: 0.5em !important;
 }
 
-.card:hover,
-.itemTile:hover {
-    /*transform: scale(1.05) !important;*/
-    box-shadow: 0 8px 25px rgba(0,0,0,0.5) !important;
-    z-index: 10 !important;
-}
-
-/* Card Images */
-.cardImage,
-.cardImageContainer {
-    border-radius: 4px !important;
-}
-
-.cardOverlayButton {
-    background-color: rgba(0,0,0,0.7) !important;
-}
-
-.cardOverlayButton:hover {
-    background-color: var(--netflix-red) !important;
-}
-
-/* Text Elements */
-.cardText,
-.cardTextCentered,
-.listItemBody {
-    color: var(--netflix-white) !important;
-}
-
-.cardText-secondary,
-.listItemBodyText-secondary {
-    color: var(--netflix-text-muted) !important;
-}
-
-/* Buttons */
-.button-submit,
-.raised {
-    background-color: var(--netflix-red) !important;
-    color: var(--netflix-white) !important;
-    border: none !important;
-    border-radius: 4px !important;
-    font-weight: bold !important;
-    transition: background-color 0.2s ease !important;
-}
-
-.button-submit:hover,
-.raised:hover {
-    background-color: var(--netflix-dark-red) !important;
-}
-
-.button-flat {
-    color: var(--netflix-white) !important;
-    background: transparent !important;
-    border: 1px solid var(--netflix-light-gray) !important;
-    border-radius: 4px !important;
-}
-
-.button-flat:hover {
-    background-color: var(--netflix-hover) !important;
-    border-color: var(--netflix-white) !important;
-}
-
-/* Progress Bars */
-.itemProgressBar {
-    background-color: var(--netflix-gray) !important;
-}
-
-.itemProgressBarForeground {
-    background-color: var(--netflix-red) !important;
-}
-
-/* Modal/Dialog Windows */
-.dialog,
-.dialogContent {
-    background-color: var(--netflix-dark-gray) !important;
-    color: var(--netflix-white) !important;
-    border-radius: 8px !important;
-}
-
-.dialogHeader {
-    background-color: var(--netflix-dark-gray) !important;
-    border-bottom: 1px solid var(--netflix-gray) !important;
-}
-
-/* Form Elements */
-.inputContainer,
-.selectContainer {
-    background-color: var(--netflix-gray) !important;
-    border: 1px solid var(--netflix-light-gray) !important;
-    border-radius: 4px !important;
-}
-
+.searchFields input,
 .inputContainer input,
 .inputContainer textarea,
 .selectContainer select {
-    background-color: transparent !important;
-    color: var(--netflix-white) !important;
+  background: transparent !important;
+  color: var(--nfx-white) !important;
 }
 
-.inputLabel {
-    color: var(--netflix-text-muted) !important;
+/* ========== CONTENT CARDS & TILES ========== */
+.card, .itemTile, .listItem, .cardBox {
+  background: var(--nfx-dark-gray) !important;
+  border-radius: 0.6em !important;
+  border: none !important;
+  margin: 0.5em !important;
+  overflow: hidden !important;
+  transition: box-shadow 0.2s, transform 0.2s !important;
 }
 
-/* Home Sections */
+.card:hover, .itemTile:hover, .cardBox:hover,
+.card:focus, .itemTile:focus, .cardBox:focus {
+  background: var(--nfx-hover) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important;
+  transform: scale(1.04) !important;
+  z-index: 3;
+  outline: 2px solid var(--nfx-red) !important;
+}
+
+.cardImage, .cardImageContainer, .cardBox img {
+  border-radius: 0.6em !important;
+  width: 100%;
+  height: auto;
+}
+
+/* Card Overlay Buttons */
+.cardOverlayButton {
+  background: rgba(0,0,0,0.7) !important;
+  color: var(--nfx-white) !important;
+  border-radius: 0.4em !important;
+}
+.cardOverlayButton:hover, .cardOverlayButton:focus {
+  background: var(--nfx-red) !important;
+  color: var(--nfx-white) !important;
+}
+
+/* ========== TEXT & HEADINGS ========== */
+.cardText, .cardTextCentered, .listItemBody,
+.mediaInfoText, .homeSectionHeader {
+  color: var(--nfx-white) !important;
+  text-shadow: 1px 1px 2px #000 !important;
+}
+
+.cardText-secondary, .listItemBodyText-secondary, .mediaInfoSecondaryText, .inputLabel {
+  color: var(--nfx-muted) !important;
+}
+
+/* Home Section Header */
 .homeSectionHeader {
-    color: var(--netflix-white) !important;
-    font-size: 20px !important;
-    font-weight: bold !important;
-    margin-bottom: 10px !important;
+  font-size: 1.25em !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.7em !important;
 }
 
-.itemsContainer {
-    padding: 0 60px !important;
+/* ========== BUTTONS ========== */
+.button-submit, .raised {
+  background: var(--nfx-red) !important;
+  color: var(--nfx-white) !important;
+  border: none !important;
+  border-radius: 0.5em !important;
+  font-weight: 700 !important;
+  font-size: 1.1em !important;
+  padding: 0.6em 2em !important;
+  margin: 0.5em 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.button-submit:hover, .raised:hover,
+.button-submit:focus, .raised:focus {
+  background: var(--nfx-dark-red) !important;
+  outline: 2px solid var(--nfx-white) !important;
 }
 
-/* Scrollbars */
-::-webkit-scrollbar {
-    width: 8px !important;
-    height: 8px !important;
+.button-flat {
+  color: var(--nfx-white) !important;
+  background: transparent !important;
+  border: 1px solid var(--nfx-light-gray) !important;
+  border-radius: 0.5em !important;
+  padding: 0.6em 2em !important;
+}
+.button-flat:hover, .button-flat:focus {
+  background: var(--nfx-hover) !important;
+  border-color: var(--nfx-white) !important;
+  outline: 2px solid var(--nfx-red) !important;
 }
 
-::-webkit-scrollbar-track {
-    background: var(--netflix-dark-gray) !important;
+/* ========== MODALS & DIALOGS ========== */
+.dialog, .dialogContent, .dialogHeader {
+  background: var(--nfx-dark-gray) !important;
+  color: var(--nfx-white) !important;
+  border-radius: 0.7em !important;
+  border: none !important;
 }
 
-::-webkit-scrollbar-thumb {
-    background: var(--netflix-gray) !important;
-    border-radius: 4px !important;
+/* ========== PROGRESS BARS ========== */
+.itemProgressBar {
+  background: var(--nfx-gray) !important;
+  height: 0.35em !important;
+}
+.itemProgressBarForeground, .playedIndicator {
+  background: var(--nfx-red) !important;
+  height: 0.35em !important;
+  border-radius: 0.2em !important;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--netflix-light-gray) !important;
-}
-
-/* Detail Page */
-.detailPagePrimaryContainer {
-    background: linear-gradient(
-        to right,
-        var(--netflix-black) 150px,
-        transparent 100%
-    ) !important;
-}
-
-.detailPageContent {
-    background-color: var(--netflix-black) !important;
-}
-
-/* Backdrop */
-.backdropImage {
-    opacity: 0.3 !important;
-}
-
-/* Media Info */
-.mediaInfoText {
-    color: var(--netflix-white) !important;
-}
-
-.mediaInfoSecondaryText {
-    color: var(--netflix-text-muted) !important;
-}
-
-/* Tables */
-.tblHeader {
-    background-color: var(--netflix-dark-gray) !important;
-    color: var(--netflix-white) !important;
-}
-
-.listItem:nth-child(even) {
-    background-color: rgba(255,255,255,0.02) !important;
-}
-
-/* Loading Indicators */
-.mdl-spinner__layer-1 .mdl-spinner__circle-clipper .mdl-spinner__circle {
-    border-color: var(--netflix-red) !important;
-}
-
-/* Tabs */
+/* ========== TABS ========== */
 .tabButton {
-    color: var(--netflix-text-muted) !important;
-    border-bottom: 2px solid transparent !important;
+  color: var(--nfx-muted) !important;
+  border-bottom: 2px solid transparent !important;
+  font-size: 1.1em !important;
+  padding: 0.5em 1.2em !important;
+  margin: 0 0.2em;
+  background: transparent !important;
+  transition: color 0.2s, border 0.2s;
 }
-
 .tabButton.tabButton-active {
-    color: var(--netflix-white) !important;
-    border-bottom-color: var(--netflix-red) !important;
+  color: var(--nfx-white) !important;
+  border-bottom-color: var(--nfx-red) !important;
 }
 
-/* Custom Netflix-style hover effects for rows */
-.listItem:hover {
-    background-color: var(--netflix-hover) !important;
-    border-radius: 4px !important;
+.tabButton:focus {
+  outline: 2px solid var(--nfx-red) !important;
 }
 
-/* Player controls styling */
+/* ========== SCROLLBARS ========== */
+::-webkit-scrollbar {
+  width: 14px !important;
+  background: var(--nfx-dark-gray) !important;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--nfx-gray) !important;
+  border-radius: 7px !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nfx-light-gray) !important;
+}
+@media (pointer: coarse) {
+  ::-webkit-scrollbar {
+    width: 18px !important;
+  }
+}
+
+/* ========== PLAYER CONTROLS ========== */
 .videoOsdBottom {
-    background: linear-gradient(transparent, rgba(0,0,0,0.8)) !important;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85)) !important;
 }
-
-.mdl-slider::-webkit-slider-thumb {
-    background-color: var(--netflix-red) !important;
-}
-
+.mdl-slider::-webkit-slider-thumb,
 .mdl-slider::-moz-range-thumb {
-    background-color: var(--netflix-red) !important;
+  background: var(--nfx-red) !important;
 }
 
-/* Custom styling for library tiles to look more like Netflix */
-.cardBox {
-    border-radius: 6px !important;
-    overflow: hidden !important;
-    margin-left: 1em !important;
+/* ========== DETAIL PAGE & BACKDROP ========== */
+.detailPagePrimaryContainer, .detailPageContent {
+  background: var(--nfx-black) !important;
 }
 
-.cardBox:hover {
-    transform: scale(1.08) !important;
-    transition: transform 0.3s ease !important;
+.backdropImage {
+  opacity: 0.2 !important;
 }
 
-/* Continue watching progress indicator */
-.playedIndicator {
-    background-color: var(--netflix-red) !important;
-    height: 2vw !important;
-    border-radius: 10px !important;
+/* ========== TABLES ========== */
+.tblHeader {
+  background: var(--nfx-dark-gray) !important;
+  color: var(--nfx-white) !important;
+}
+.listItem:nth-child(even) {
+  background: rgba(255,255,255,0.02) !important;
 }
 
-/* Custom scrolling containers */
-.scrollX {
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
+/* ========== LOADING SPINNER ========== */
+.mdl-spinner__layer-1 .mdl-spinner__circle-clipper .mdl-spinner__circle {
+  border-color: var(--nfx-red) !important;
 }
 
-.scrollX::-webkit-scrollbar {
-    display: none !important;
+/* ========== ACCESSIBILITY: FOCUS STATES ========== */
+*:focus {
+  outline: 2px solid var(--nfx-red) !important;
+  z-index: 2;
 }
 
-.detailImageContainer .card .cardBox {
-    margin: 0;
-    margin-left: -0.2vw !important;
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 800px) {
+  .itemsContainer { padding: 0 0.2em !important; }
+  .mainDrawer, .navDrawer { width: 90vw !important; }
 }
 
-.detailPagePrimaryContent {
-    position: absolute;
-    display: flow;
-    margin-left: -29vw;
-    margin-top: 25vw;
-    width: 25vw;
+@media (pointer: coarse), (max-width: 900px) {
+  .card, .itemTile, .cardBox {
+    min-width: 45vw !important;
+    font-size: 1.04em !important;
+  }
+  .headerLeft .button-link, .skinHeader .button-link {
+    font-size: 2.2em !important;
+  }
 }
 
-.mainDetailButtons {
-    align-items: center;
-    display: flex;
-    margin: 1em 0;
-    justify-content: space-between;
-    width: 23vw;
+/* ========== TV-SPECIFIC UPGRADES (webOS, large screens) ========== */
+@media (min-width: 1600px) {
+  html { font-size: 28px !important; }
+  .button-submit, .raised, .button-flat {
+    font-size: 1.5em !important;
+    min-height: 2.5em !important;
+  }
+  .card, .itemTile, .cardBox {
+    font-size: 1.12em !important;
+    min-width: 20vw !important;
+  }
+}
+
+/* ========== REMOVE/REDUCE ANIMATIONS FOR TV PERFORMANCE ========== */
+* {
+  transition: none !important;
+  animation: none !important;
 }
