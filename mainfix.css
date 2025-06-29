@@ -333,3 +333,8 @@ body {
 .scrollX::-webkit-scrollbar {
     display: none !important;
 }
+
+.detailImageContainer .card .cardBox {
+    margin: 0;
+    margin-left: -0.2vw !important;
+}
