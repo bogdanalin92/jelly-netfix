@@ -102,7 +102,7 @@ body {
 
 .card:hover,
 .itemTile:hover {
-    transform: scale(1.05) !important;
+    /*transform: scale(1.05) !important;*/
     box-shadow: 0 8px 25px rgba(0,0,0,0.5) !important;
     z-index: 10 !important;
 }
@@ -337,4 +337,20 @@ body {
 .detailImageContainer .card .cardBox {
     margin: 0;
     margin-left: -0.2vw !important;
+}
+
+.detailPagePrimaryContent {
+    position: absolute;
+    display: flow;
+    margin-left: -29vw;
+    margin-top: 25vw;
+    width: 25vw;
+}
+
+.mainDetailButtons {
+    align-items: center;
+    display: flex;
+    margin: 1em 0;
+    justify-content: space-between;
+    width: 23vw;
 }
